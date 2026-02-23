@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply min-h-screen bg-sky-50 text-slate-900;
+  background-image: linear-gradient(160deg, #e0f2fe 0%, #f8fafc 40%, #dbeafe 100%);
+}
+
+.glow-card {
+  @apply rounded-2xl border border-white/70 bg-white/70 p-6 shadow-[0_10px_35px_rgba(2,132,199,0.12)] backdrop-blur;
+}
+
+.section-title {
+  @apply text-2xl font-semibold text-sky-800;
+}

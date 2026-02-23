@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horizon 2026 Preview</title>
+  <style>
+    :root { --sky:#0284c7; --bg1:#e0f2fe; --bg2:#f8fafc; --ink:#0f172a; }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);
+      background:linear-gradient(160deg,var(--bg1),var(--bg2) 45%, #dbeafe);
+    }
+    header{position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid #cfe8ff}
+    nav{max-width:1100px;margin:auto;padding:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{color:var(--sky);font-weight:800;letter-spacing:.04em}
+    .pill{padding:6px 10px;border:1px solid #cbd5e1;border-radius:999px;font-size:.85rem}
+    .container{max-width:1100px;margin:auto;padding:24px 14px 40px}
+    .card{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);padding:18px;border-radius:16px;box-shadow:0 10px 35px rgba(2,132,199,.12)}
+    .grid{display:grid;gap:14px;grid-template-columns:1fr}@media(min-width:900px){.two{grid-template-columns:1fr 1fr}.three{grid-template-columns:repeat(3,1fr)}}
+    h1{font-size:2.2rem;margin:.3rem 0 0}.muted{color:#334155}.tiny{font-size:.75rem;letter-spacing:.18em;color:var(--sky);text-transform:uppercase}
+    h2{color:#075985}
+  </style>
+</head>
+<body>
+<header><nav><div class="brand">HORIZON 2026</div><div><span class="pill">Transparency</span><span class="pill">Unity</span><span class="pill">Science</span><span class="pill">AI Progress</span></div></nav></header>
+<main class="container">
+  <section class="card">
+    <div class="tiny">Preparing minds for possibility</div>
+    <h1>Humanity Forward Platform</h1>
+    <p class="muted">A hopeful space for transparent knowledge, global cooperation, scientific discovery, and responsible curiosity.</p>
+  </section>
+
+  <section class="grid two" style="margin-top:14px">
+    <article class="card"><h2>Global Transparency Dashboard</h2><p class="muted">Track official announcements, scientific breakthroughs, and open data milestones.</p></article>
+    <article class="card"><h2>AI & Civilization Evolution Hub</h2><p class="muted">Explore how AI can safely accelerate astronomy, research, and planetary collaboration.</p></article>
+  </section>
+
+  <section style="margin-top:14px">
+    <h2 style="margin:0 0 10px">Five Pillars</h2>
+    <div class="grid three">
+      <article class="card"><strong>Transparency</strong><p class="muted">Open knowledge and responsible disclosure.</p></article>
+      <article class="card"><strong>Unity</strong><p class="muted">Human identity above national identity.</p></article>
+      <article class="card"><strong>Scientific Integrity</strong><p class="muted">Curiosity guided by evidence.</p></article>
+    </div>
+  </section>
+</main>
+</body>
+</html>
