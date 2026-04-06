@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: reckonlight-api
+    runtime: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python3 backend/server.py"
+    envVars:
+      - key: GDACS_CACHE_TTL_SECONDS
+        value: "360"
+      - key: GDACS_PORT
+        value: "10000"
+      - key: PYTHON_VERSION
+        value: "3.11.11"
+
+  - type: static_site
+    name: reckonlight-frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "dist"
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: "https://reckonlight-api.onrender.com"
