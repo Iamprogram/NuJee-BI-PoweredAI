@@ -13,7 +13,8 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.11"
 
-  - type: static_site
+  - type: web
+    runtime: static
     name: reckonlight-frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: "dist"
