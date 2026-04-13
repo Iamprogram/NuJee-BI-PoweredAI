@@ -1,6 +1,14 @@
-# Unknown Beyond (Rebuild Starter)
+# Unknown Beyond - ET, UAP & Cosmic Mystery Archive
 
-This repository contains a clean-room rebuild starter for the **Unknown Beyond** site architecture.
+This branch updates the previous starter to better match the shared `ReckonLightByGenspark` structure and behavior:
+
+- `css/` and `js/` split by feature
+- richer landing page and content sections
+- library filtering UI
+- Leaflet-powered map page
+- timeline era filtering
+- Discord-focused community page
+- legal pages (`privacy.html`, `terms.html`)
 
 ## Run locally
 
@@ -8,17 +16,4 @@ This repository contains a clean-room rebuild starter for the **Unknown Beyond**
 python3 -m http.server 8080
 ```
 
-Open: <http://localhost:8080>
-
-## Pages
-- `/index.html`
-- `/library.html`
-- `/map.html`
-- `/timeline.html`
-- `/community.html`
-- `/resources.html`
-- `/about.html`
-
-## Notes
-- This is an inferred reconstruction from publicly visible page output.
-- See `ARCHITECTURE_ANALYSIS.md` for assumptions and migration plan.
+Open http://localhost:8080
