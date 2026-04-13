@@ -1,6 +1,446 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Library - Unknown Beyond</title><link rel="stylesheet" href="assets/styles.css"></head>
-<body data-page="library">
-<header class="site-header"><div class="container nav"><div class="brand">UNKNOWN BEYOND</div><nav class="nav-links"><a href="index.html" data-page="home">Home</a><a href="library.html" data-page="library">Library</a><a href="map.html" data-page="map">Map</a><a href="timeline.html" data-page="timeline">Timeline</a><a href="community.html" data-page="community">Community</a><a href="resources.html" data-page="resources">Resources</a><a href="about.html" data-page="about">About</a></nav></div></header>
-<main class="container page-title"><h1>Content Library</h1><p class="small">Categorized anomaly archive with credibility levels and evidence tags.</p>
-<div class="grid section"><article class="card"><h3>UAP Sightings</h3><p>5,247 reports</p></article><article class="card"><h3>ET Encounters</h3><p>1,893 cases</p></article><article class="card"><h3>Government Disclosures</h3><p>412 documents</p></article><article class="card"><h3>Ancient Civilizations</h3><p>738 sites</p></article><article class="card"><h3>Deep Space Anomalies</h3><p>289 observations</p></article><article class="card"><h3>Theoretical Physics</h3><p>156 papers</p></article></div></main>
-<footer class="footer"><div class="container"><p>© <span id="year"></span> Unknown Beyond</p></div></footer><script src="assets/app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore comprehensive archive of UAP sightings, ET encounters, government disclosures, and cosmic mysteries with evidence-based analysis.">
+    <title>Content Library - Unknown Beyond</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/library.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-satellite"></i>
+                <span>UNKNOWN BEYOND</span>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="library.html" class="active">Library</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="timeline.html">Timeline</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="https://nujee.freeddns.org/" class="nav-back"><i class="fas fa-arrow-left"></i> NuJee Dimension</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Content Library</h1>
+            <p>Explore structured, evidence-based reports of unexplained phenomena from around the world</p>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="library-controls">
+        <div class="container">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by location, date, or keywords...">
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="uap">UAP Sightings</option>
+                        <option value="et">ET Encounters</option>
+                        <option value="disclosure">Government Disclosures</option>
+                        <option value="ancient">Ancient Civilizations</option>
+                        <option value="space">Deep Space Anomalies</option>
+                        <option value="physics">Theoretical Physics</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Evidence Type</label>
+                    <select id="evidenceFilter">
+                        <option value="all">All Evidence Types</option>
+                        <option value="video">Video</option>
+                        <option value="radar">Radar Data</option>
+                        <option value="witness">Witness Testimony</option>
+                        <option value="document">Official Document</option>
+                        <option value="photo">Photographic</option>
+                        <option value="physical">Physical Evidence</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Credibility Level</label>
+                    <select id="credibilityFilter">
+                        <option value="all">All Levels</option>
+                        <option value="verified">Verified</option>
+                        <option value="high">High Credibility</option>
+                        <option value="medium">Medium Credibility</option>
+                        <option value="contested">Contested</option>
+                        <option value="speculative">Speculative</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Time Period</label>
+                    <select id="timeFilter">
+                        <option value="all">All Time</option>
+                        <option value="recent">Last 30 Days</option>
+                        <option value="year">Last Year</option>
+                        <option value="5years">Last 5 Years</option>
+                        <option value="modern">Modern Era (2000+)</option>
+                        <option value="cold-war">Cold War Era</option>
+                        <option value="ancient">Ancient History</option>
+                    </select>
+                </div>
+                
+                <button id="clearFilters" class="btn-clear">Clear Filters</button>
+            </div>
+            
+            <div class="results-info">
+                <span id="resultCount">Showing 247 results</span>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sortBy">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="credibility">Highest Credibility</option>
+                        <option value="relevance">Most Relevant</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="library-content">
+        <div class="container">
+            <div class="content-grid" id="contentGrid">
+                <!-- Content items will be populated by JavaScript -->
+                
+                <!-- Example Item 1 -->
+                <article class="content-card" data-category="uap" data-evidence="radar,video" data-credibility="verified" data-date="2004-11">
+                    <div class="card-badge-container">
+                        <span class="category-badge uap">UAP Sighting</span>
+                        <span class="credibility-badge verified">Verified</span>
+                    </div>
+                    <h3>USS Nimitz Carrier Strike Group Encounter</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> November 14, 2004</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Pacific Ocean, 100mi SW San Diego</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-video"></i> Infrared Video</span>
+                        <span class="evidence-tag"><i class="fas fa-radar"></i> Radar Data</span>
+                        <span class="evidence-tag"><i class="fas fa-user"></i> Multiple Witnesses</span>
+                    </div>
+                    <p>
+                        USS Princeton detected multiple UAPs on radar over several days. F/A-18F Super Hornets 
+                        investigated and recorded the "Tic Tac" shaped object demonstrating extraordinary 
+                        flight characteristics including instant acceleration and hypersonic speeds.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>U.S. Navy / DoD</span>
+                        </div>
+                        <a href="https://www.defense.gov/News/Releases/Release/Article/2165713/" target="_blank" rel="noopener noreferrer" class="read-more">Full Analysis <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 2 -->
+                <article class="content-card" data-category="disclosure" data-evidence="document" data-credibility="verified" data-date="2024-01">
+                    <div class="card-badge-container">
+                        <span class="category-badge disclosure">Gov. Disclosure</span>
+                        <span class="credibility-badge verified">Verified</span>
+                    </div>
+                    <h3>AARO 2023 Annual Report on UAP</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> January 12, 2024</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Washington, DC</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-file-alt"></i> Official Document</span>
+                        <span class="evidence-tag"><i class="fas fa-database"></i> 571 Cases</span>
+                    </div>
+                    <p>
+                        All-domain Anomaly Resolution Office released comprehensive report documenting 
+                        291 new UAP reports. Most cases remain unresolved with some demonstrating 
+                        unusual flight characteristics.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-landmark"></i>
+                            <span>Pentagon / AARO</span>
+                        </div>
+                        <a href="https://www.aaro.mil/" target="_blank" rel="noopener noreferrer" class="read-more">Read Report <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 3 -->
+                <article class="content-card" data-category="disclosure" data-evidence="document" data-credibility="verified" data-date="2021-06">
+                    <div class="card-badge-container">
+                        <span class="category-badge disclosure">Gov. Disclosure</span>
+                        <span class="credibility-badge verified">Verified</span>
+                    </div>
+                    <h3>Pentagon UAP Report (2021)</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> June 25, 2021</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Washington, DC</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-file-alt"></i> Official Document</span>
+                        <span class="evidence-tag"><i class="fas fa-database"></i> 144 Cases</span>
+                    </div>
+                    <p>
+                        US Office of the Director of National Intelligence released preliminary assessment 
+                        confirming 144 UAP incidents between 2004-2021. Report states phenomena are real, 
+                        not US technology, and remain mostly unexplained.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-landmark"></i>
+                            <span>ODNI / Pentagon</span>
+                        </div>
+                        <a href="https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf" target="_blank" rel="noopener noreferrer" class="read-more">Read Report <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 4 -->
+                <article class="content-card" data-category="et" data-evidence="witness" data-credibility="contested" data-date="1961-09">
+                    <div class="card-badge-container">
+                        <span class="category-badge et">ET Encounter</span>
+                        <span class="credibility-badge contested">Contested</span>
+                    </div>
+                    <h3>Betty and Barney Hill Abduction</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> September 19, 1961</span>
+                        <span><i class="fas fa-map-marker-alt"></i> White Mountains, NH</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-user"></i> Witness Testimony</span>
+                        <span class="evidence-tag"><i class="fas fa-brain"></i> Hypnotic Regression</span>
+                    </div>
+                    <p>
+                        One of the first widely publicized alien abduction cases. The Hills reported 
+                        missing time and later, under hypnosis, described being taken aboard a spacecraft. 
+                        Their star map drawing preceded astronomical discoveries.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-book"></i>
+                            <span>Historical Case File</span>
+                        </div>
+                        <a href="https://horizon2026.notion.site/NuJee-Dimension-33032d81f98c8059800bfc831168d730" target="_blank" rel="noopener noreferrer" class="read-more">Case Details <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 4 -->
+                <article class="content-card" data-category="ancient" data-evidence="physical" data-credibility="high" data-date="ancient">
+                    <div class="card-badge-container">
+                        <span class="category-badge ancient">Ancient Mystery</span>
+                        <span class="credibility-badge high">High Credibility</span>
+                    </div>
+                    <h3>Nazca Lines: AI Discovers 168 New Geoglyphs</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> December 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Nazca Desert, Peru</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-satellite"></i> Satellite Imaging</span>
+                        <span class="evidence-tag"><i class="fas fa-robot"></i> AI Analysis</span>
+                    </div>
+                    <p>
+                        IBM's AI system identified 168 previously unknown geoglyphs dating 2,000+ years. 
+                        The precision and astronomical alignments of these massive ground drawings continue 
+                        to raise questions about ancient knowledge and purpose.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-university"></i>
+                            <span>Archaeological Research</span>
+                        </div>
+                        <a href="https://www.nationalgeographic.com/history/article/ai-finds-168-new-nazca-geoglyphs-etched-into-the-ground" target="_blank" rel="noopener noreferrer" class="read-more">Explore Site <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 5 -->
+                <article class="content-card" data-category="space" data-evidence="radar" data-credibility="high" data-date="2017-10">
+                    <div class="card-badge-container">
+                        <span class="category-badge space">Space Anomaly</span>
+                        <span class="credibility-badge high">High Credibility</span>
+                    </div>
+                    <h3>'Oumuamua: First Interstellar Visitor</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> October 19, 2017</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Interstellar Space</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-telescope"></i> Telescope Data</span>
+                        <span class="evidence-tag"><i class="fas fa-chart-line"></i> Trajectory Analysis</span>
+                    </div>
+                    <p>
+                        First confirmed interstellar object passing through our solar system. Its unusual 
+                        cigar shape, unexpected acceleration, and tumbling motion sparked debate about 
+                        natural vs artificial origins.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-space-shuttle"></i>
+                            <span>NASA / ESA</span>
+                        </div>
+                        <a href="https://horizon2026.notion.site/NuJee-Dimension-33032d81f98c8059800bfc831168d730" target="_blank" rel="noopener noreferrer" class="read-more">Scientific Analysis <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 6 -->
+                <article class="content-card" data-category="uap" data-evidence="video,witness" data-credibility="high" data-date="2015-01">
+                    <div class="card-badge-container">
+                        <span class="category-badge uap">UAP Sighting</span>
+                        <span class="credibility-badge high">High Credibility</span>
+                    </div>
+                    <h3>USS Theodore Roosevelt "Gimbal" Encounter</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> January 21, 2015</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Atlantic Ocean, East Coast</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-video"></i> FLIR Video</span>
+                        <span class="evidence-tag"><i class="fas fa-user"></i> Naval Aviators</span>
+                    </div>
+                    <p>
+                        F/A-18 pilots from USS Theodore Roosevelt recorded multiple encounters with 
+                        unidentified objects. The "Gimbal" video shows an object rotating in flight 
+                        while maintaining heading. Pentagon confirmed authenticity.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>U.S. Navy</span>
+                        </div>
+                        <a href="https://www.defense.gov/News/Releases/Release/Article/2165713/" target="_blank" rel="noopener noreferrer" class="read-more">Watch Video <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 7 -->
+                <article class="content-card" data-category="physics" data-evidence="document" data-credibility="high" data-date="2023-06">
+                    <div class="card-badge-container">
+                        <span class="category-badge physics">Theory</span>
+                        <span class="credibility-badge high">High Credibility</span>
+                    </div>
+                    <h3>Alcubierre-White Warp Drive Analysis</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> June 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Peer-Reviewed</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-flask"></i> Theoretical Physics</span>
+                        <span class="evidence-tag"><i class="fas fa-graduation-cap"></i> Academic</span>
+                    </div>
+                    <p>
+                        Updated analysis of space-time manipulation for faster-than-light travel. 
+                        New models suggest potential energy requirements significantly lower than 
+                        previously calculated, though still beyond current technology.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-university"></i>
+                            <span>Physics Journal</span>
+                        </div>
+                        <a href="https://horizon2026.notion.site/NuJee-Dimension-33032d81f98c8059800bfc831168d730" target="_blank" rel="noopener noreferrer" class="read-more">Read Paper <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+
+                <!-- Example Item 8 -->
+                <article class="content-card" data-category="disclosure" data-evidence="witness" data-credibility="high" data-date="2023-07">
+                    <div class="card-badge-container">
+                        <span class="category-badge disclosure">Testimony</span>
+                        <span class="credibility-badge high">High Credibility</span>
+                    </div>
+                    <h3>Congressional UAP Hearing 2023</h3>
+                    <div class="card-details">
+                        <span><i class="fas fa-calendar"></i> July 26, 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> U.S. Capitol</span>
+                    </div>
+                    <div class="evidence-tags">
+                        <span class="evidence-tag"><i class="fas fa-gavel"></i> Official Testimony</span>
+                        <span class="evidence-tag"><i class="fas fa-users"></i> Whistleblowers</span>
+                    </div>
+                    <p>
+                        Historic congressional hearing featuring testimony from former intelligence 
+                        officials David Grusch, Ryan Graves, and David Fravor regarding UAP encounters 
+                        and alleged recovery programs.
+                    </p>
+                    <div class="card-footer">
+                        <div class="source-info">
+                            <i class="fas fa-landmark"></i>
+                            <span>U.S. Congress</span>
+                        </div>
+                        <a href="https://oversight.house.gov/hearing/unidentified-anomalous-phenomena-implications-on-national-security-public-safety-and-government-transparency/" target="_blank" rel="noopener noreferrer" class="read-more">View Transcript <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Unknown Beyond</h4>
+                    <p>A curated anomaly intelligence platform exploring ET, UAP, and unknown phenomena with analytical discipline.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/8Qb3QFtuHt" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/Iamprogram" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="library.html">Library</a></li>
+                        <li><a href="map.html">Map</a></li>
+                        <li><a href="timeline.html">Timeline Explorer</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Research Archive</a></li>
+                        <li><a href="resources.html#guidelines">Citation Guidelines</a></li>
+                        <li><a href="resources.html#credibility">Credibility Framework</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="about.html#disclaimer">Disclaimer</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="about.html#contact">Contact</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Unknown Beyond. This platform explores unexplained phenomena and encourages critical thinking. Content credibility varies and should be independently verified.</p>
+                <p class="footer-ecosystem">Part of the <strong>NuJee Dimension</strong> ecosystem · <a href="https://nujee.freeddns.org/" target="_blank" rel="noopener noreferrer">nujee.freeddns.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/library.js"></script>
+</body>
+</html>
