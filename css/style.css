@@ -77,3 +77,12 @@ body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg-primary
 .footer-bottom{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
 .social-links{display:flex;gap:.5rem}
 @media (max-width:860px){.mobile-menu-toggle{display:block}.nav-menu{display:none;width:100%}.nav-menu.open{display:flex;flex-direction:column;align-items:flex-start}.nav-divider{display:none}}
+.page-header{padding:2.75rem 0 1.5rem;background:linear-gradient(180deg,rgba(59,130,246,.08),transparent)}
+.page-header h1{font-family:var(--font-display);margin:0 0 .35rem;color:var(--accent-primary)}
+.page-header p{margin:0;color:var(--text-secondary)}
+.content-section{padding:var(--spacing-2xl) 0}
+.content-section.alt-bg{background-color:var(--bg-secondary)}
+.content-box{max-width:900px;margin:0 auto}
+.content-box h2{font-family:var(--font-display);color:var(--accent-primary);margin-bottom:var(--spacing-md);font-size:2rem}
+.content-box h3{color:var(--text-primary);margin:var(--spacing-lg) 0 var(--spacing-sm);font-size:1.5rem}
+.content-box p,.content-box li{color:var(--text-secondary);line-height:1.8}
