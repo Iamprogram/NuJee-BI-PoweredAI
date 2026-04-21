@@ -1,1 +1,428 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Timeline - Unknown Beyond</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/timeline.css"></head><body data-page="timeline"><nav class="main-nav"><div class="container nav-container"><a class="logo" href="index.html">UNKNOWN BEYOND</a><ul class="nav-menu"><li><a href="index.html" data-page-link="home">Home</a></li><li><a href="library.html" data-page-link="library">Library</a></li><li><a href="map.html" data-page-link="map">Map</a></li><li><a href="timeline.html" data-page-link="timeline">Timeline</a></li><li><a href="community.html" data-page-link="community">Community</a></li><li><a href="resources.html" data-page-link="resources">Resources</a></li><li><a href="about.html" data-page-link="about">About</a></li></ul></div></nav><main class="container section"><h1 class="section-title">Timeline Explorer</h1><select id="era-filter" class="select"><option value="all">All eras</option><option value="cold-war">Cold War Era</option><option value="disclosure">Disclosure Era</option><option value="modern">Modern Era</option></select><div class="timeline-list" style="margin-top:1rem"><article class="timeline-item" data-era="cold-war"><div class="timeline-year">1947</div><p class="muted">Roswell incident enters public anomaly discourse.</p></article><article class="timeline-item" data-era="modern"><div class="timeline-year">2004</div><p class="muted">USS Nimitz Tic-Tac encounter off California coast.</p></article><article class="timeline-item" data-era="disclosure"><div class="timeline-year">2023</div><p class="muted">UAP testimony before U.S. House committee.</p></article></div></main><footer class="footer"><div class="container muted">© <span id="year"></span> Unknown Beyond</div></footer><script src="js/main.js"></script><script src="js/timeline.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive timeline exploring UAP sightings, ET encounters, and cosmic mysteries from ancient history to modern day.">
+    <title>Timeline Explorer - Unknown Beyond</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-satellite"></i>
+                <span>UNKNOWN BEYOND</span>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="timeline.html" class="active">Timeline</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="https://nujee.freeddns.org/" class="nav-back"><i class="fas fa-arrow-left"></i> NuJee Dimension</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Timeline Explorer</h1>
+            <p>Journey through the chronology of unexplained phenomena from ancient civilizations to modern disclosure</p>
+        </div>
+    </section>
+
+    <!-- Timeline Controls -->
+    <section class="timeline-controls">
+        <div class="container">
+            <div class="era-selector">
+                <button class="era-btn active" data-era="all">All Eras</button>
+                <button class="era-btn" data-era="ancient">Ancient History</button>
+                <button class="era-btn" data-era="medieval">Medieval Era</button>
+                <button class="era-btn" data-era="industrial">Industrial Age</button>
+                <button class="era-btn" data-era="cold-war">Cold War</button>
+                <button class="era-btn" data-era="modern">Modern Era</button>
+                <button class="era-btn" data-era="disclosure">Disclosure Era</button>
+            </div>
+            
+            <div class="timeline-filters">
+                <select id="timelineCategoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="uap">UAP Sightings</option>
+                    <option value="et">ET Encounters</option>
+                    <option value="disclosure">Government Disclosures</option>
+                    <option value="ancient">Ancient Mysteries</option>
+                    <option value="space">Space Anomalies</option>
+                </select>
+                
+                <select id="timelineSignificance">
+                    <option value="all">All Significance</option>
+                    <option value="critical">Critical Events Only</option>
+                    <option value="major">Major Events</option>
+                    <option value="notable">Notable Events</option>
+                </select>
+                
+                <button id="zoomIn" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+                <button id="zoomOut" class="zoom-btn"><i class="fas fa-search-minus"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Visualization -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                
+                <!-- Ancient History -->
+                <div class="timeline-era" data-era="ancient">
+                    <div class="era-header">
+                        <h2>Ancient History</h2>
+                        <span class="era-period">~3000 BCE - 500 CE</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="ancient" data-significance="critical">
+                        <div class="timeline-marker ancient"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">~2560 BCE</div>
+                            <h3>Construction of the Great Pyramid</h3>
+                            <p>Giza Pyramid constructed with precision that challenges conventional understanding of ancient engineering capabilities.</p>
+                            <div class="timeline-tags">
+                                <span class="tag ancient">Ancient Mystery</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                            <a href="https://www.nationalgeographic.com/history/article/giza-pyramids" target="_blank" rel="noopener noreferrer" class="timeline-link">Learn More <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="ancient" data-significance="major">
+                        <div class="timeline-marker ancient"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">~500 BCE</div>
+                            <h3>Nazca Lines Creation</h3>
+                            <p>Massive geoglyphs created in Peru's Nazca Desert, visible only from air. Purpose remains debated.</p>
+                            <div class="timeline-tags">
+                                <span class="tag ancient">Ancient Mystery</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                            <a href="https://www.nationalgeographic.com/history/article/nazca-lines" target="_blank" rel="noopener noreferrer" class="timeline-link">Learn More <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="ancient" data-significance="notable">
+                        <div class="timeline-marker ancient"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">~329 BCE</div>
+                            <h3>Alexander's Silver Shields</h3>
+                            <p>Ancient texts describe "flying silver shields" that attacked Alexander the Great's army during river crossing.</p>
+                            <div class="timeline-tags">
+                                <span class="tag ancient">Historical Account</span>
+                                <span class="tag-significance notable">Notable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Medieval Era -->
+                <div class="timeline-era" data-era="medieval">
+                    <div class="era-header">
+                        <h2>Medieval Era</h2>
+                        <span class="era-period">500 CE - 1500 CE</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="notable">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1561</div>
+                            <h3>Celestial Phenomenon Over Nuremberg</h3>
+                            <p>Mass sighting of aerial "battle" with numerous objects described in woodcut and written accounts.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">UAP Sighting</span>
+                                <span class="tag-significance notable">Notable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industrial Age -->
+                <div class="timeline-era" data-era="industrial">
+                    <div class="era-header">
+                        <h2>Industrial Age</h2>
+                        <span class="era-period">1760 - 1945</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="major">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1897</div>
+                            <h3>Great Airship Wave</h3>
+                            <p>Thousands of reports across United States of mysterious airships, years before powered flight.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">UAP Sighting</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="critical">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1942</div>
+                            <h3>Battle of Los Angeles</h3>
+                            <p>Unidentified object triggers anti-aircraft response. Army fires 1,400+ rounds with no confirmed hits.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">UAP Sighting</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cold War Era -->
+                <div class="timeline-era" data-era="cold-war">
+                    <div class="era-header">
+                        <h2>Cold War Era</h2>
+                        <span class="era-period">1945 - 1991</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="critical">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">July 1947</div>
+                            <h3>Roswell Incident</h3>
+                            <p>Crash of unidentified object near Roswell, NM. Initial "flying disc" press release quickly retracted.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">UAP Crash</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                            <a href="https://www.history.com/topics/paranormal/roswell" target="_blank" rel="noopener noreferrer" class="timeline-link">Learn More <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="et" data-significance="major">
+                        <div class="timeline-marker et"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">September 1961</div>
+                            <h3>Betty and Barney Hill Abduction</h3>
+                            <p>First widely publicized alien abduction case. Couple reports missing time and detailed abduction memories.</p>
+                            <div class="timeline-tags">
+                                <span class="tag et">ET Encounter</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="major">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1980</div>
+                            <h3>Rendlesham Forest Incident</h3>
+                            <p>Multiple USAF personnel encounter landed craft near UK airbase. Physical evidence documented.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">UAP Landing</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modern Era -->
+                <div class="timeline-era" data-era="modern">
+                    <div class="era-header">
+                        <h2>Modern Era</h2>
+                        <span class="era-period">1991 - 2017</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="critical">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">March 1997</div>
+                            <h3>Phoenix Lights Mass Sighting</h3>
+                            <p>Massive V-shaped craft observed by thousands across Arizona. Multiple videos captured.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">Mass Sighting</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="critical">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">November 2004</div>
+                            <h3>USS Nimitz Encounter</h3>
+                            <p>Navy pilots encounter "Tic Tac" UAP with unprecedented flight characteristics. Infrared video captured.</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">Military Encounter</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                            <a href="https://www.defense.gov/News/Releases/Release/Article/2165713/" target="_blank" rel="noopener noreferrer" class="timeline-link">Learn More <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="uap" data-significance="major">
+                        <div class="timeline-marker uap"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2014-2015</div>
+                            <h3>USS Roosevelt UAP Encounters</h3>
+                            <p>Navy pilots report daily encounters with UAPs off East Coast. Multiple videos released including "Gimbal."</p>
+                            <div class="timeline-tags">
+                                <span class="tag uap">Military Encounter</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="space" data-significance="major">
+                        <div class="timeline-marker space"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">October 2017</div>
+                            <h3>'Oumuamua Detection</h3>
+                            <p>First interstellar object detected passing through solar system. Unusual acceleration noted.</p>
+                            <div class="timeline-tags">
+                                <span class="tag space">Space Anomaly</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Disclosure Era -->
+                <div class="timeline-era" data-era="disclosure">
+                    <div class="era-header">
+                        <h2>Disclosure Era</h2>
+                        <span class="era-period">2017 - Present</span>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="disclosure" data-significance="critical">
+                        <div class="timeline-marker disclosure"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">December 2017</div>
+                            <h3>NYT UAP Story Published</h3>
+                            <p>New York Times reveals Pentagon's secret UAP program. Navy videos authenticated and released publicly.</p>
+                            <div class="timeline-tags">
+                                <span class="tag disclosure">Major Disclosure</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="disclosure" data-significance="critical">
+                        <div class="timeline-marker disclosure"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">April 2020</div>
+                            <h3>Pentagon Confirms UAP Videos</h3>
+                            <p>Department of Defense officially releases and confirms authenticity of three Navy UAP videos.</p>
+                            <div class="timeline-tags">
+                                <span class="tag disclosure">Official Confirmation</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="disclosure" data-significance="critical">
+                        <div class="timeline-marker disclosure"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">June 2021</div>
+                            <h3>UAP Report to Congress</h3>
+                            <p>Office of Director of National Intelligence releases preliminary UAP assessment documenting 144 cases.</p>
+                            <div class="timeline-tags">
+                                <span class="tag disclosure">Government Report</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="disclosure" data-significance="critical">
+                        <div class="timeline-marker disclosure"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">July 2023</div>
+                            <h3>Congressional UAP Hearing</h3>
+                            <p>Whistleblowers testify under oath about UAP encounters and alleged recovery programs.</p>
+                            <div class="timeline-tags">
+                                <span class="tag disclosure">Congressional Hearing</span>
+                                <span class="tag-significance critical">Critical</span>
+                            </div>
+                            <a href="https://oversight.house.gov/hearing/unidentified-anomalous-phenomena-implications-on-national-security-public-safety-and-government-transparency/" target="_blank" rel="noopener noreferrer" class="timeline-link">Learn More <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-category="disclosure" data-significance="major">
+                        <div class="timeline-marker disclosure"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">January 2024</div>
+                            <h3>AARO Annual Report</h3>
+                            <p>All-domain Anomaly Resolution Office releases comprehensive report with 571 total UAP cases.</p>
+                            <div class="timeline-tags">
+                                <span class="tag disclosure">Annual Report</span>
+                                <span class="tag-significance major">Major</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Unknown Beyond</h4>
+                    <p>A curated anomaly intelligence platform exploring ET, UAP, and unknown phenomena with analytical discipline.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/8Qb3QFtuHt" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/Iamprogram" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="library.html">Content Library</a></li>
+                        <li><a href="map.html">World Map</a></li>
+                        <li><a href="timeline.html">Timeline Explorer</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Research Archive</a></li>
+                        <li><a href="resources.html#guidelines">Citation Guidelines</a></li>
+                        <li><a href="resources.html#credibility">Credibility Framework</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="about.html#disclaimer">Disclaimer</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="about.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Unknown Beyond. This platform explores unexplained phenomena and encourages critical thinking. Content credibility varies and should be independently verified.</p>
+                <p class="footer-ecosystem">Part of the <strong>NuJee Dimension</strong> ecosystem · <a href="https://nujee.freeddns.org/" target="_blank" rel="noopener noreferrer">nujee.freeddns.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/timeline.js"></script>
+</body>
+</html>
