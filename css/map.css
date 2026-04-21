@@ -1,0 +1,22 @@
+.map-controls{padding:1rem 0 1.2rem;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
+.controls-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--spacing-md)}
+.control-group label{display:block;color:var(--text-primary);margin-bottom:.45rem;font-weight:600}
+.checkbox-group{display:grid;gap:.3rem}
+.checkbox-label{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);font-size:.9rem}
+.checkbox-label input{accent-color:var(--accent-primary)}
+.checkmark{width:10px;height:10px;border-radius:50%;display:inline-block}
+.checkmark.uap,.legend-marker.uap{background:#3b82f6}.checkmark.et,.legend-marker.et{background:#a78bfa}.checkmark.ancient,.legend-marker.ancient{background:#f59e0b}.checkmark.disclosure,.legend-marker.disclosure{background:#10b981}
+.map-stats{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem;color:var(--text-secondary)}
+.container-fluid{width:min(1400px,96vw);margin:0 auto}
+.map-section{padding:1rem 0}
+.map-wrapper{position:relative}
+#worldMap{height:520px;border-radius:14px;border:1px solid var(--border-color)}
+.map-legend{position:absolute;top:14px;right:14px;background:rgba(10,14,26,.9);border:1px solid var(--border-color);border-radius:10px;padding:.7rem .8rem;min-width:160px}
+.legend-item,.cred-item{display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--text-secondary)}
+.legend-marker,.cred-dot{width:10px;height:10px;border-radius:50%}.cred-dot.verified{background:#10b981}.cred-dot.high{background:#3b82f6}.cred-dot.medium{background:#f59e0b}.cred-dot.contested{background:#ef4444}
+.map-notice{padding:.7rem 0}.notice-box{display:flex;gap:.5rem;align-items:flex-start;padding:.8rem;border-radius:10px;border:1px solid var(--border-color);background:var(--bg-secondary)}
+.notable-locations{padding:1rem 0 2.5rem}.hotspot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.hotspot-card{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:.9rem}
+.hotspot-icon{font-size:1.2rem;color:var(--accent-primary)}
+.btn-locate{margin-top:.55rem;border:1px solid var(--border-color);background:var(--bg-tertiary);color:var(--text-primary);padding:.5rem .65rem;border-radius:8px;cursor:pointer}
+@media (max-width:980px){.controls-grid{grid-template-columns:1fr 1fr}.map-legend{position:static;margin-top:.6rem}}
