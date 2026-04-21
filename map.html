@@ -1,1 +1,309 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Map - Unknown Beyond</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/map.css"></head><body data-page="map"><nav class="main-nav"><div class="container nav-container"><a class="logo" href="index.html">UNKNOWN BEYOND</a><ul class="nav-menu"><li><a href="index.html" data-page-link="home">Home</a></li><li><a href="library.html" data-page-link="library">Library</a></li><li><a href="map.html" data-page-link="map">Map</a></li><li><a href="timeline.html" data-page-link="timeline">Timeline</a></li><li><a href="community.html" data-page-link="community">Community</a></li><li><a href="resources.html" data-page-link="resources">Resources</a></li><li><a href="about.html" data-page-link="about">About</a></li></ul></div></nav><main class="container section"><h1 class="section-title">Interactive World Map</h1><div id="world-map"></div><div class="card hotspots"><h3>Notable hotspots</h3><p class="muted">San Diego (Nimitz), Washington DC (ODNI), Nazca (geoglyph analysis).</p></div></main><footer class="footer"><div class="container muted">© <span id="year"></span> Unknown Beyond</div></footer><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="js/main.js"></script><script src="js/map.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive world map displaying UAP sightings, ET encounters, and unexplained phenomena locations worldwide.">
+    <title>World Map - Unknown Beyond</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-satellite"></i>
+                <span>UNKNOWN BEYOND</span>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="map.html" class="active">Map</a></li>
+                <li><a href="timeline.html">Timeline</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="https://nujee.freeddns.org/" class="nav-back"><i class="fas fa-arrow-left"></i> NuJee Dimension</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Global UAP & Mystery Map</h1>
+            <p>Explore documented sightings and unexplained phenomena from around the world</p>
+        </div>
+    </section>
+
+    <!-- Map Controls -->
+    <section class="map-controls">
+        <div class="container">
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label><i class="fas fa-layer-group"></i> Category Filter</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked data-category="uap">
+                            <span class="checkmark uap"></span>
+                            UAP Sightings
+                            <span class="count">(5,247)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked data-category="et">
+                            <span class="checkmark et"></span>
+                            ET Encounters
+                            <span class="count">(1,893)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked data-category="ancient">
+                            <span class="checkmark ancient"></span>
+                            Ancient Sites
+                            <span class="count">(738)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked data-category="disclosure">
+                            <span class="checkmark disclosure"></span>
+                            Gov. Disclosures
+                            <span class="count">(412)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label><i class="fas fa-calendar-alt"></i> Time Period</label>
+                    <div class="timeline-slider">
+                        <input type="range" id="timelineSlider" min="1" max="100" value="100">
+                        <div class="timeline-labels">
+                            <span>1940</span>
+                            <span id="currentYear">2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label><i class="fas fa-shield-alt"></i> Credibility</label>
+                    <select id="credibilityMapFilter">
+                        <option value="all">All Levels</option>
+                        <option value="verified">Verified Only</option>
+                        <option value="high">High Credibility</option>
+                        <option value="medium+">Medium & Above</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label><i class="fas fa-chart-bar"></i> Display Mode</label>
+                    <select id="displayMode">
+                        <option value="markers">Individual Markers</option>
+                        <option value="heatmap">Heat Map</option>
+                        <option value="clusters">Cluster View</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="map-stats">
+                <div class="stat-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong id="visibleMarkers">8,290</strong> Locations Visible</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-globe"></i>
+                    <span><strong>92</strong> Countries</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Last Updated: <strong>Today</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Container -->
+    <section class="map-section">
+        <div class="container-fluid">
+            <div class="map-wrapper">
+                <div id="worldMap"></div>
+                
+                <!-- Map Legend -->
+                <div class="map-legend">
+                    <h4>Legend</h4>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-marker uap"></div>
+                            <span>UAP Sighting</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker et"></div>
+                            <span>ET Encounter</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker ancient"></div>
+                            <span>Ancient Site</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker disclosure"></div>
+                            <span>Gov. Disclosure</span>
+                        </div>
+                    </div>
+                    <div class="legend-credibility">
+                        <h5>Credibility</h5>
+                        <div class="cred-item"><span class="cred-dot verified"></span> Verified</div>
+                        <div class="cred-item"><span class="cred-dot high"></span> High</div>
+                        <div class="cred-item"><span class="cred-dot medium"></span> Medium</div>
+                        <div class="cred-item"><span class="cred-dot contested"></span> Contested</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Status Notice -->
+    <section class="map-notice">
+        <div class="container">
+            <div class="notice-box">
+                <i class="fas fa-info-circle"></i>
+                <p>Interactive map is being expanded. Browse the documented hotspots below, or explore the full archive in the <a href="library.html">Library</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable Locations -->
+    <section class="notable-locations">
+        <div class="container">
+            <h2 class="section-title">Notable Hotspots</h2>
+            <div class="hotspot-grid">
+                <div class="hotspot-card" data-lat="32.375" data-lng="-103.263">
+                    <div class="hotspot-icon uap">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Roswell, New Mexico</h3>
+                    <p>147 reported incidents</p>
+                    <p class="hotspot-description">
+                        Site of the famous 1947 incident and numerous subsequent sightings
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+                
+                <div class="hotspot-card" data-lat="37.234" data-lng="-115.814">
+                    <div class="hotspot-icon disclosure">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Area 51, Nevada</h3>
+                    <p>89 documented observations</p>
+                    <p class="hotspot-description">
+                        Highly classified Air Force facility with extensive UAP reports
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+                
+                <div class="hotspot-card" data-lat="33.748" data-lng="-84.388">
+                    <div class="hotspot-icon uap">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Phoenix, Arizona</h3>
+                    <p>234 reported incidents</p>
+                    <p class="hotspot-description">
+                        Including the famous 1997 Phoenix Lights mass sighting event
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+                
+                <div class="hotspot-card" data-lat="-13.163" data-lng="-72.545">
+                    <div class="hotspot-icon ancient">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Nazca Lines, Peru</h3>
+                    <p>168 new geoglyphs discovered</p>
+                    <p class="hotspot-description">
+                        Ancient mysteries with astronomical alignments and unknown purpose
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+                
+                <div class="hotspot-card" data-lat="51.179" data-lng="-1.826">
+                    <div class="hotspot-icon ancient">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Stonehenge, UK</h3>
+                    <p>73 unexplained phenomena</p>
+                    <p class="hotspot-description">
+                        Prehistoric monument with numerous modern UAP sightings nearby
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+                
+                <div class="hotspot-card" data-lat="29.979" data-lng="31.134">
+                    <div class="hotspot-icon ancient">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Giza Pyramids, Egypt</h3>
+                    <p>56 documented cases</p>
+                    <p class="hotspot-description">
+                        Ancient engineering marvel with ongoing mystery and modern sightings
+                    </p>
+                    <button class="btn-locate">Locate on Map <i class="fas fa-crosshairs"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Unknown Beyond</h4>
+                    <p>A curated anomaly intelligence platform exploring ET, UAP, and unknown phenomena with analytical discipline.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/8Qb3QFtuHt" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/Iamprogram" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="library.html">Library</a></li>
+                        <li><a href="map.html">Map</a></li>
+                        <li><a href="timeline.html">Timeline Explorer</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="resources.html">Research Archive</a></li>
+                        <li><a href="resources.html#guidelines">Citation Guidelines</a></li>
+                        <li><a href="resources.html#credibility">Credibility Framework</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="about.html#disclaimer">Disclaimer</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="about.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Unknown Beyond. This platform explores unexplained phenomena and encourages critical thinking. Content credibility varies and should be independently verified.</p>
+                <p class="footer-ecosystem">Part of the <strong>NuJee Dimension</strong> ecosystem · <a href="https://nujee.freeddns.org/" target="_blank" rel="noopener noreferrer">nujee.freeddns.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>
