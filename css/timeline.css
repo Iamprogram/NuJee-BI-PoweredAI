@@ -1,0 +1,23 @@
+.timeline-controls{padding:1rem 0 1.4rem;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
+.era-selector{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
+.era-btn{padding:.5rem .7rem;border:1px solid var(--border-color);border-radius:var(--radius-sm);background:var(--bg-tertiary);color:var(--text-secondary);cursor:pointer}
+.era-btn.active,.era-btn:hover{color:var(--accent-primary);border-color:var(--accent-primary)}
+.timeline-filters{display:grid;grid-template-columns:1fr 1fr auto auto;gap:.6rem}
+.timeline-filters select,.zoom-btn{padding:.55rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:var(--bg-tertiary);color:var(--text-primary)}
+.timeline-section{padding:var(--spacing-2xl) 0}
+.timeline-wrapper{position:relative;transition:transform .2s ease}
+.timeline-line{position:absolute;left:12px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent-primary),transparent)}
+.timeline-era{margin-bottom:1.25rem}
+.era-header h2{margin:0;color:var(--accent-primary)}
+.era-period{color:var(--text-muted);font-size:.88rem}
+.timeline-item{position:relative;padding-left:2.4rem;margin-top:.7rem}
+.timeline-marker{position:absolute;left:4px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--accent-primary);box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+.timeline-content{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:.85rem}
+.timeline-date{font-family:var(--font-display);font-size:.82rem;color:var(--accent-tertiary)}
+.timeline-tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.45rem}
+.tag,.tag-significance{font-size:.72rem;padding:.2rem .45rem;border-radius:999px;background:var(--bg-tertiary);color:var(--text-secondary)}
+.tag-significance.critical{background:rgba(239,68,68,.18);color:var(--danger)}
+.tag-significance.major{background:rgba(245,158,11,.18);color:var(--warning)}
+.tag-significance.notable{background:rgba(59,130,246,.18);color:var(--accent-primary)}
+.timeline-link{display:inline-block;margin-top:.45rem;color:var(--accent-primary)}
+@media (max-width:900px){.timeline-filters{grid-template-columns:1fr 1fr}.zoom-btn{min-height:40px}}
